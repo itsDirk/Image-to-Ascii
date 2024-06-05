@@ -26,3 +26,5 @@ q
 Asrc/main/java/org/example/imageconverter/AsciiImageUtilities.java,6\d\6d58e5e4ac1a2c9085fb900ef471546590ec3c42
 h
 8src/main/java/org/example/utils/AsciiImageUtilities.java,d\0\d0581919e5dac17700546ec5eb17b8bc7df3a0f6
+u
+Esrc/main/java/org/example/imageconverter/ResizableImageConverter.java,6\1\615e8d49404cf85fcd2b2217eed1ee7568f60f5f
