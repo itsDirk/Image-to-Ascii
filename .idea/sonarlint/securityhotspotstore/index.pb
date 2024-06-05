@@ -20,3 +20,9 @@ j
 :src/main/java/org/example/imageconverter/ImageChecker.java,4\e\4e1a7fb34084eaf1b9b4f661c31865df1317a973
 r
 Bsrc/main/java/org/example/imageconverter/SimpleImageConverter.java,a\0\a0a787092a42599404b072496f22db5ca8332013
+t
+Dsrc/main/java/org/example/imageconverter/AbstractImageConverter.java,5\1\51767981f0f0dfc01b047a6bde4d55ee848e81d4
+q
+Asrc/main/java/org/example/imageconverter/AsciiImageUtilities.java,6\d\6d58e5e4ac1a2c9085fb900ef471546590ec3c42
+h
+8src/main/java/org/example/utils/AsciiImageUtilities.java,d\0\d0581919e5dac17700546ec5eb17b8bc7df3a0f6

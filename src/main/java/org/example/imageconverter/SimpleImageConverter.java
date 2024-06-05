@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class SimpleImageConverter implements IImageConverter {
-    private String path;
+    private final String path;
 
     public SimpleImageConverter(String path) {
         this.path = path;
@@ -19,20 +19,23 @@ public class SimpleImageConverter implements IImageConverter {
     @Override
     public char[][] convertImageToAscii() throws IOException {
         verifyImage(path);
-        BufferedImage myImage = ImageIO.read(new File(path));
+        BufferedImage image = ImageIO.read(new File(path));
 
-        Pixel[][] pixels = getPixels(myImage);
+        Pixel[][] pixels = getPixels(image);
         float[][] brightnesses = getBrightnesses(pixels);
+        char[][] asciiImage = getAsciiImage(brightnesses);
 
-        for (float[] row : brightnesses) {
-            for (float brightness : row) {
-                System.out.print(getAsciiCharacterForBrightness(brightness));
+        return asciiImage;
+    }
+
+    private char[][] getAsciiImage(float[][] brightnesses) {
+        char[][] asciiImage = new char[brightnesses.length][brightnesses[0].length];
+        for (int i = 0; i < brightnesses.length; i++) {
+            for (int j = 0; j < brightnesses[i].length; j++) {
+                asciiImage[i][j] = getAsciiCharacterForBrightness(brightnesses[i][j]);
             }
-            System.out.print("\n");
         }
-
-
-        return null;
+        return asciiImage;
     }
 
     private char getAsciiCharacterForBrightness(float brightness) {
