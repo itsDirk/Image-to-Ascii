@@ -14,3 +14,9 @@ $src/main/java/org/example/Pixel.java,6\0\60e6b3bd74efda7034352cf90b5ac3d79da0c
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+m
+=src/main/java/org/example/imageconverter/IImageConverter.java,7\b\7b1ad194387631994da5caca9b7981e8875f90b7
+j
+:src/main/java/org/example/imageconverter/ImageChecker.java,4\e\4e1a7fb34084eaf1b9b4f661c31865df1317a973
+r
+Bsrc/main/java/org/example/imageconverter/SimpleImageConverter.java,a\0\a0a787092a42599404b072496f22db5ca8332013
