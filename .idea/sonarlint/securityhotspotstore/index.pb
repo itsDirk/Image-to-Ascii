@@ -30,3 +30,5 @@ u
 Esrc/main/java/org/example/imageconverter/ResizableImageConverter.java,6\1\615e8d49404cf85fcd2b2217eed1ee7568f60f5f
 {
 Ksrc/main/java/org/example/imageconverter/SimpleResizableImageConverter.java,3\4\34437722fb8d60fd51c4113489d7150614edc26e
+|
+Lsrc/main/java/org/example/imageconverter/MergingResizableImageConverter.java,d\b\db1733ab4f1e7c4420793a9b80f24f3a3b56ef85

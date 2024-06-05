@@ -31,17 +31,47 @@ public class SimpleResizableImageConverter extends AbstractImageConverter {
     }
 
     private Pixel[][] getPixels(BufferedImage myImage, int newWidth, int newHeight) {
-        int imageHeight = myImage.getHeight(null);
-        int imageWidth = myImage.getWidth(null);
+        int imageHeight = myImage.getHeight();
+        int imageWidth = myImage.getWidth();
+
+        // Bereken de grootte van elk blok
+        int blockWidth = imageWidth / newWidth;
+        int blockHeight = imageHeight / newHeight;
 
         Pixel[][] pixels = new Pixel[newHeight][newWidth];
-        for (int i = 0; i < newWidth; i++) {
-            for (int j = 0; j < newHeight; j++) {
-                int pixelValue = myImage.getRGB(i * imageWidth / newWidth, j * imageHeight / newHeight);
-                Color color = new Color(pixelValue);
-                pixels[j][i] = new Pixel(color.getRed(), color.getGreen(), color.getBlue());
+
+        for (int y = 0; y < newHeight; y++) {
+            for (int x = 0; x < newWidth; x++) {
+                // Bepaal het gemiddelde van de kleuren in het huidige blok
+                int redTotal = 0, greenTotal = 0, blueTotal = 0;
+                int numPixels = 0;
+
+                for (int blockY = 0; blockY < blockHeight; blockY++) {
+                    for (int blockX = 0; blockX < blockWidth; blockX++) {
+                        int imgX = x * blockWidth + blockX;
+                        int imgY = y * blockHeight + blockY;
+
+                        if (imgX < imageWidth && imgY < imageHeight) {
+                            int pixelValue = myImage.getRGB(imgX, imgY);
+                            Color color = new Color(pixelValue);
+                            redTotal += color.getRed();
+                            greenTotal += color.getGreen();
+                            blueTotal += color.getBlue();
+                            numPixels++;
+                        }
+                    }
+                }
+
+                // Bereken de gemiddelde kleur
+                int avgRed = redTotal / numPixels;
+                int avgGreen = greenTotal / numPixels;
+                int avgBlue = blueTotal / numPixels;
+
+                // Sla de gemiddelde kleur op in de nieuwe pixel
+                pixels[y][x] = new Pixel(avgRed, avgGreen, avgBlue);
             }
         }
+
         return pixels;
     }
 }
