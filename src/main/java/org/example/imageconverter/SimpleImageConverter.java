@@ -1,10 +1,8 @@
 package org.example.imageconverter;
 
-import org.example.ImageChecker;
-import org.example.Pixel;
+import org.example.dto.Pixel;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

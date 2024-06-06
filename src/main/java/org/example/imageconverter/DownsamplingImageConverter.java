@@ -1,18 +1,17 @@
 package org.example.imageconverter;
 
-import org.example.Pixel;
+import org.example.dto.Pixel;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class MergingResizableImageConverter extends AbstractImageConverter {
+public class DownsamplingImageConverter extends AbstractImageConverter {
     private int newWidth;
     private int newHeight;
 
-    public MergingResizableImageConverter(String path, int newWidth, int newHeight) {
+    public DownsamplingImageConverter(String path, int newWidth, int newHeight) {
         super(path);
         this.newWidth = newWidth;
         this.newHeight = newHeight;
@@ -53,10 +52,9 @@ public class MergingResizableImageConverter extends AbstractImageConverter {
 
                         if (imgX < imageWidth && imgY < imageHeight) {
                             int pixelValue = myImage.getRGB(imgX, imgY);
-                            Color color = new Color(pixelValue);
-                            redTotal += color.getRed();
-                            greenTotal += color.getGreen();
-                            blueTotal += color.getBlue();
+                            redTotal += (pixelValue >> 16) & 0xFF;
+                            greenTotal += (pixelValue >> 8) & 0xFF;
+                            blueTotal += pixelValue & 0xFF;
                             numPixels++;
                         }
                     }

@@ -1,6 +1,6 @@
 package org.example.imageconverter;
 
-import org.example.Pixel;
+import org.example.dto.Pixel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -38,8 +38,10 @@ public class SimpleResizableImageConverter extends AbstractImageConverter {
         for (int i = 0; i < newWidth; i++) {
             for (int j = 0; j < newHeight; j++) {
                 int pixelValue = myImage.getRGB(i * imageWidth / newWidth, j * imageHeight / newHeight);
-                Color color = new Color(pixelValue);
-                pixels[j][i] = new Pixel(color.getRed(), color.getGreen(), color.getBlue());
+                int red = (pixelValue >> 16) & 0xFF;
+                int green = (pixelValue >> 8) & 0xFF;
+                int blue = pixelValue & 0xFF;
+                pixels[j][i] = new Pixel(red, green, blue);
             }
         }
         return pixels;

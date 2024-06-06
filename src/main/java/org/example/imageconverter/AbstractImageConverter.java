@@ -1,7 +1,7 @@
 package org.example.imageconverter;
 
-import org.example.ImageChecker;
-import org.example.Pixel;
+import org.example.dto.Pixel;
+import org.example.utils.AsciiImageUtilities;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,7 +14,7 @@ public abstract class AbstractImageConverter implements IImageConverter {
     }
 
     protected void verifyImage(String path) {
-        ImageChecker imageChecker = new ImageChecker(path);
+        AsciiImageUtilities.ImageChecker imageChecker = new AsciiImageUtilities.ImageChecker(path);
         if (!imageChecker.isValidImage()) {
             throw new IllegalArgumentException("Invalid image type");
         }
@@ -28,8 +28,10 @@ public abstract class AbstractImageConverter implements IImageConverter {
         for (int i = 0; i < imageWidth; i++) {
             for (int j = 0; j < imageHeight; j++) {
                 int pixelValue = myImage.getRGB(i, j);
-                Color color = new Color(pixelValue);
-                pixels[j][i] = new Pixel(color.getRed(), color.getGreen(), color.getBlue());
+                int red = (pixelValue >> 16) & 0xFF;
+                int green = (pixelValue >> 8) & 0xFF;
+                int blue = pixelValue & 0xFF;
+                pixels[j][i] = new Pixel(red, green, blue);
             }
         }
         return pixels;
