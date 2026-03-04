@@ -10,18 +10,20 @@ import java.io.IOException;
 public class App
 {
     public static void main( String[] args ) throws IOException {
+        String path = "src/main/resources/towersofivory.jpg";
+
         // Image to ASCII
-        SimpleImageConverter simpleImageConverter = new SimpleImageConverter("src/main/resources/towersofivory.jpg");
+        SimpleImageConverter simpleImageConverter = new SimpleImageConverter(path);
         AsciiImageUtilities.printAsciiImage(simpleImageConverter.convertImageToAscii());
 
 
         // Resizable Image to ASCII
-        SimpleResizableImageConverter resizableImageConverter = new SimpleResizableImageConverter("src/main/resources/towersofivory.jpg", 100, 40);
+        SimpleResizableImageConverter resizableImageConverter = new SimpleResizableImageConverter(path, 100, 40);
         AsciiImageUtilities.printAsciiImage(resizableImageConverter.convertImageToAscii());
 
 
         // Downsampling Image to ASCII
-        DownsamplingImageConverter mergingResizableImageConverter = new DownsamplingImageConverter("src/main/resources/towersofivory.jpg", 100, 40);
+        DownsamplingImageConverter mergingResizableImageConverter = new DownsamplingImageConverter(path, 100, 40);
         AsciiImageUtilities.printAsciiImage(mergingResizableImageConverter.convertImageToAscii());
     }
 }
